@@ -3,7 +3,7 @@ import { test } from "..//fixtures/baseFixtures";
 
 test.describe("Regression Testing", () => {
 
-    test("End To End", async ({ page, loginPage, loggedUser, productSearch, productDetails, checkout, shoppingCart }) => {
+    test("End To End Testing ", async ({ page, loginPage, loggedUser, productSearch, productDetails, checkout, shoppingCart }) => {
 
         //login done by login fixture 
 
@@ -37,7 +37,7 @@ test.describe("Regression Testing", () => {
         // checkout
         await checkout.enterDiscount();
         await checkout.enterGiftcard();
-        await checkout.checkEstimateShipping("United States", "Alaska", "456789");
+        await checkout.checkEstimateShipping("United States", "Alaska", "4578623");
 
         await checkout.verifyCartTotalsMatch();
         await checkout.terms.click();
