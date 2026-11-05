@@ -1,3 +1,0 @@
-login successfull
-Add to card Status: The product has been added to your shopping cart
-List of All Products : [ '\t\tComputing and Internet\t10.00\t\t120.00' ]

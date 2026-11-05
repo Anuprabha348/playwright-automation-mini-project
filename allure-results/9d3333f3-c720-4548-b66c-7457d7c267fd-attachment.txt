@@ -1,3 +1,0 @@
-login successfull
-Comparing Item Total: 30.00 with Sub-Total: 30.00 and Total: 30.00
-All totals match successfully!
