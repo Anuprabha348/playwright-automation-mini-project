@@ -1,0 +1,30 @@
+[
+    {
+        "scenario":"Valid credentials",
+        "email": "john123@test123.com",
+        "password": "Password@123",
+        "status": "valid",
+        "expectedResult":" "
+    },
+    {
+        "scenario": "Invalid password",
+        "email": "john123@test123.com",
+        "password": "wrongpassword",
+        "status": "invalid",
+        "expectedResult":"Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect"
+    },
+    {
+        "scenario": "Invalid Email",
+        "email": " wrong@test123.com",
+        "password": "Password@123",
+        "status": "invalid",
+        "expectedResult":"Please enter a valid email address."
+    },
+    {
+        "scenario": "Empty credentials",
+        "email": "",
+        "password": "",
+        "status": "invalid",
+        "expectedResult":"Login was unsuccessful. Please correct the errors and try again. No customer account found"
+    }
+]

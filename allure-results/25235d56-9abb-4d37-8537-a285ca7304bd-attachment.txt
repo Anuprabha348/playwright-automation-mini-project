@@ -1,0 +1,11 @@
+login successfull
+[
+  'Computing and Internet\n' +
+    '30.00\n' +
+    '10.00\n' +
+    'Copy of Computing and Internet EX\n' +
+    '30.00\n' +
+    '10.00'
+]
+Product Name: Computing and Internet
+Default Quantity: 1
