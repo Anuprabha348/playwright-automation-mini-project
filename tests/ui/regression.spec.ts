@@ -19,6 +19,7 @@ test.describe("Regression Testing", () => {
         await productDetails.verifyProductDetails(searchTerm);
         await productDetails.VerifyQuanitypriceincreese('2')
         await  productDetails.addtocart.click();
+         await  productDetails.addtocart.click();
         await productDetails.addProductToCart();
 
         // 3. Navigate to Shopping Cart
@@ -37,7 +38,7 @@ test.describe("Regression Testing", () => {
         // checkout
         await checkout.enterDiscount();
         await checkout.enterGiftcard();
-        await checkout.checkEstimateShipping("United States", "Alaska", "4578623");
+        await checkout.checkEstimateShipping("United States", "Alaska", "457866");
 
         await checkout.verifyCartTotalsMatch();
         await checkout.terms.click();
