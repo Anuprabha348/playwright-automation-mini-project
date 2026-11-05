@@ -18,7 +18,6 @@ export class ProductDetails {
     readonly succ;
     readonly negqty;
 
-
     constructor(page: Page) {
         this.page = page;
         this.prodetails = page.locator('div.page.product-details-page');
@@ -38,8 +37,7 @@ export class ProductDetails {
         this.negqty = page.getByText('Quantity should be positive', { exact: true })
     }
 
-    // Methods
-
+    //  Action Methods
     async verifyProductDetails(expectedProductName: string, ) {
         // product details 
 
