@@ -3,7 +3,7 @@ import { test } from "..//fixtures/baseFixtures";
 
 test.describe("Regression Testing", () => {
 
-    test("End To End Testing ", async ({ page, loginPage, loggedUser, productSearch, productDetails, checkout, shoppingCart }) => {
+    test("End To End Testing ", async ({ page,loggedUser, productSearch, productDetails, checkout, shoppingCart }) => {
 
         //login done by login fixture 
         // product search 

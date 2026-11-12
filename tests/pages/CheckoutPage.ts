@@ -280,8 +280,7 @@ export class Checkout {
         console.log("7. " + await this.zipval.innerText());
         console.log("8. " + await this.phoneval.innerText());
 
-        console.log("-----------------------------------");
-        console.log("All billing validations passed!");
+        console.log("-----All billing validations passed!------");
     }
 
     async EnterShippingaddress() {
