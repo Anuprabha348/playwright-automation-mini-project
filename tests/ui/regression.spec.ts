@@ -16,10 +16,10 @@ test.describe("Regression Testing", () => {
         // product details
 
         await productSearch.clickSearchedProduct(searchTerm);
-        await productDetails.verifyProductDetails(searchTerm);
-        await productDetails.VerifyQuanitypriceincreese('2')
-        await  productDetails.addtocart.click();
-         await  productDetails.addtocart.click();
+        await productDetails.verifyProductDetails(searchTerm,'2');
+       // await productDetails.VerifyQuanitypriceincreese('2');
+      //  await productDetails.addtocart.click();
+      //  await productDetails.addtocart.click();
         await productDetails.addProductToCart();
 
         // 3. Navigate to Shopping Cart
@@ -35,6 +35,7 @@ test.describe("Regression Testing", () => {
         await shoppingCart.priceCheck();
         await shoppingCart.changeQty();
         await shoppingCart.quantityAndPriceChangeCalculation('3');
+
         // checkout
         await checkout.enterDiscount();
         await checkout.enterGiftcard();
@@ -44,6 +45,7 @@ test.describe("Regression Testing", () => {
         await checkout.terms.click();
         await checkout.checkoutbtn.click();
         await checkout.enterBillingAddressvalidation("New Address");
+
         // billing 
         await checkout.enterBillingAddress("New Address", "United States");
         await checkout.EnterShippingaddress();

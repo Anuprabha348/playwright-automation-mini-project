@@ -208,7 +208,7 @@ export class Checkout {
         await this.stateDropdown.selectOption({ label: state });
         await this.zip.fill(zipinput);
         await this.estimateButton.click();
-        expect(this.shippingResult).toBeVisible();
+        await expect(this.shippingResult).toBeVisible();
     }
 
     async verifyCartTotalsMatch() {
@@ -224,8 +224,8 @@ export class Checkout {
         console.log(`Comparing Item Total: ${tablePriceText} with Sub-Total: ${subTotalText} and Total: ${finalTotalText}`);
 
         //  Assert they match perfectly
-        expect(tablePriceText).toBe(subTotalText);
-        expect(tablePriceText).toBe(finalTotalText);
+        await expect(tablePriceText).toBe(subTotalText);
+        await expect(tablePriceText).toBe(finalTotalText);
 
         console.log("All totals match successfully!");
     }
@@ -289,7 +289,6 @@ export class Checkout {
      
         //ndDay
         await expect(this.ndDayAir).toBeVisible();
-       
         await this.continueshipmethod.click();
     }
 
@@ -323,7 +322,7 @@ export class Checkout {
         const paymentDetailsElement = this.page.locator('#checkout-payment-info-load .payment-details, #checkout-payment-info-load p');
         const selectedPaymentText = await paymentDetailsElement.first().innerText();
         console.log("Dynamically Selected Payment Method:", selectedPaymentText.trim());
-         await this.contniuePaymentinfo.click();
+        await this.contniuePaymentinfo.click();
         return selectedPaymentText.trim(); // if use return that will be the last line ,below that wont work
    
     }

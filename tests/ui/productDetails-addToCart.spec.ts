@@ -9,8 +9,7 @@ test.describe("Product Details Module", () => {
         await productSearch.EnterSerch(searchTerm);
         await productSearch.viewSearchProductList()
         await productSearch.clickSearchedProduct(searchTerm);
-        await productDetails.verifyProductDetails(searchTerm);
-        await productDetails.VerifyQuanitypriceincreese('6')
+        await productDetails.verifyProductDetails(searchTerm,"2");
         await productDetails.addProductToCart();
 
     });
