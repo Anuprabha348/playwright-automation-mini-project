@@ -1,0 +1,4 @@
+login successfull
+Button visible: true
+Button enabled: true
+Validation Msg: The coupon code you entered couldn't be applied to your order

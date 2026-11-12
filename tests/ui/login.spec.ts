@@ -28,5 +28,5 @@ test.describe("Login Test Cases", () => {
       }
     })
   }
-})
+});
 

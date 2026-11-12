@@ -159,16 +159,17 @@ export class Checkout {
         this.ordersummary = page.locator('.order-summary-content')
         this.confirmbtninfinal = page.locator('input.button-1.confirm-order-next-step-button')
 
-        // validation
-        this.firstNameVal = page.getByText('First name is required.');
-        this.lastnameVal = page.getByText('Last name is required.');
-        this.emailval = page.getByText('Email is required.');
-        this.countryval = page.getByText('Country is required.');
-        this.cityval = page.getByText('City is required');
-        this.add1val = page.getByText('Street address is required');
-        this.zipval = page.getByText('Zip / postal code is required');
-        this.phoneval = page.getByText('Phone is required');
 
+
+        // Billing address validation locators
+        this.firstNameVal = page.locator('[data-valmsg-for="BillingNewAddress.FirstName"]');
+        this.lastnameVal = page.locator('[data-valmsg-for="BillingNewAddress.LastName"]');
+        this.emailval = page.locator('[data-valmsg-for="BillingNewAddress.Email"]');
+        this.countryval = page.locator('[data-valmsg-for="BillingNewAddress.CountryId"]');
+        this.cityval = page.locator('[data-valmsg-for="BillingNewAddress.City"]');
+        this.add1val = page.locator('[data-valmsg-for="BillingNewAddress.Address1"]');
+        this.zipval = page.locator('[data-valmsg-for="BillingNewAddress.ZipPostalCode"]');
+        this.phoneval = page.locator('[data-valmsg-for="BillingNewAddress.PhoneNumber"]');
     }
 
     // Methods
@@ -243,8 +244,8 @@ export class Checkout {
         await this.postalcode.fill("6789054");
         await this.phonenum.fill("9876543210");
         await this.continueaddress.click();
-
     }
+
     async enterBillingAddressvalidation(address: string) {
         await expect(this.billingAddHeading).toBeVisible();
         await this.selectaBillingAddress.selectOption({ label: address });
@@ -256,16 +257,32 @@ export class Checkout {
         await this.postalcode.clear();
         await this.phonenum.clear();
         await this.continueaddress.click();
-        await expect(this.firstNameVal).toBeVisible();
-        await expect(this.lastnameVal).toBeVisible();
-        await expect(this.emailval).toBeVisible();
-        await expect(this.countryval).toBeVisible();
-        await expect(this.cityval).toBeVisible();
-        await expect(this.add1val).toBeVisible();
-        await expect(this.zipval).toBeVisible();
-        await expect(this.phoneval).toBeVisible();
 
+        //  Validate all messages
+        await expect(this.firstNameVal).toHaveText('First name is required.');
+        await expect(this.lastnameVal).toHaveText('Last name is required.');
+        await expect(this.emailval).toHaveText('Email is required.');
+        await expect(this.countryval).toHaveText('Country is required.');
+        await expect(this.cityval).toHaveText('City is required');
+        await expect(this.add1val).toHaveText('Street address is required');
+        await expect(this.zipval).toHaveText('Zip / postal code is required');
+        await expect(this.phoneval).toHaveText('Phone is required');
+
+        // Print messages after all assertions pass
+        console.log("---- THESE ARE THE VALIDATION MESSAGES ------");
+
+        console.log("1. " + await this.firstNameVal.innerText());
+        console.log("2. " + await this.lastnameVal.innerText());
+        console.log("3. " + await this.emailval.innerText());
+        console.log("4. " + await this.countryval.innerText());
+        console.log("5. " + await this.cityval.innerText());
+        console.log("6. " + await this.add1val.innerText());
+        console.log("7. " + await this.zipval.innerText());
+        console.log("8. " + await this.phoneval.innerText());
+
+        console.log("-----All billing validations passed!------");
     }
+
     async EnterShippingaddress() {
         await expect(this.shippingAddheading).toBeVisible();
         await this.shippingpadd.selectOption({ label: 'John d, Alashka city, Alashka 6789054, United States' });
@@ -281,12 +298,12 @@ export class Checkout {
         await expect(this.shippingMethodheading).toBeVisible();
         await expect(this.ground).toBeVisible();
         await expect(this.ground).toBeChecked();
-        
+
         //nextday
         await expect(this.nextDay).toBeVisible();
         await this.nextDay.check();
         await expect(this.nextDay).toBeChecked();
-     
+
         //ndDay
         await expect(this.ndDayAir).toBeVisible();
         await this.continueshipmethod.click();
@@ -324,7 +341,7 @@ export class Checkout {
         console.log("Dynamically Selected Payment Method:", selectedPaymentText.trim());
         await this.contniuePaymentinfo.click();
         return selectedPaymentText.trim(); // if use return that will be the last line ,below that wont work
-   
+
     }
 
     async checkOrderconfirmation() {

@@ -1,9 +1,16 @@
-node_modules/
+# Playwright reports
 playwright-report/
 test-results/
 blob-report/
+
+# Allure reports
 allure-results/
 allure-report/
+
+# Dependencies
+node_modules/
+
+# Environment files
 .env
 .env.*
 !.env.example
