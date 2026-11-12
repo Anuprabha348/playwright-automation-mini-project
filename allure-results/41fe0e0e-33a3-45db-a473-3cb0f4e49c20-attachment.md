@@ -1,0 +1,353 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\checkout.spec.ts >> Checkout Module >> check billing Address Enter & validation,payment method,order confirm 
+- Location: tests\ui\checkout.spec.ts:26:9
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('label').filter({ hasText: 'Ground' })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" locator('label').filter({ hasText: 'Ground' }) with timeout 5000ms
+  - waiting for locator('label').filter({ hasText: 'Ground' })
+
+```
+
+```yaml
+- link "Tricentis Demo Web Shop":
+  - /url: /
+  - img "Tricentis Demo Web Shop"
+- list:
+  - listitem:
+    - link "john123@test123.com":
+      - /url: /customer/info
+  - listitem:
+    - link "Log out":
+      - /url: /logout
+  - listitem:
+    - link "Shopping cart (1)":
+      - /url: /cart
+  - listitem:
+    - link "Wishlist (1)":
+      - /url: /wishlist
+- status
+- textbox: Search store
+- button "Search"
+- list:
+  - listitem:
+    - link "Books":
+      - /url: /books
+  - listitem:
+    - link "Computers":
+      - /url: /computers
+  - listitem:
+    - link "Electronics":
+      - /url: /electronics
+  - listitem:
+    - link "Apparel & Shoes":
+      - /url: /apparel-shoes
+  - listitem:
+    - link "Digital downloads":
+      - /url: /digital-downloads
+  - listitem:
+    - link "Jewelry":
+      - /url: /jewelry
+  - listitem:
+    - link "Gift Cards":
+      - /url: /gift-cards
+- heading "Checkout" [level=1]
+- list:
+  - listitem:
+    - text: "1"
+    - heading "Billing address" [level=2]
+    - text: .
+  - listitem:
+    - text: "2"
+    - heading "Shipping address" [level=2]
+    - text: .
+  - listitem:
+    - text: "3"
+    - heading "Shipping method" [level=2]
+    - text: .
+  - listitem:
+    - text: "4"
+    - heading "Payment method" [level=2]
+    - text: .
+    - list:
+      - listitem:
+        - img "Cash On Delivery (COD) (7.00)"
+        - radio "Cash On Delivery (COD) (7.00) Cash On Delivery (COD) (7.00)" [checked]
+        - text: Cash On Delivery (COD) (7.00)
+      - listitem:
+        - img "Check / Money Order (5.00)"
+        - radio "Check / Money Order (5.00) Check / Money Order (5.00)"
+        - text: Check / Money Order (5.00)
+      - listitem:
+        - img "Credit Card"
+        - radio "Credit Card Credit Card"
+        - text: Credit Card
+      - listitem:
+        - img "Purchase Order"
+        - radio "Purchase Order Purchase Order"
+        - text: Purchase Order
+    - paragraph:
+      - link "Back":
+        - /url: "#"
+    - button "Continue"
+  - listitem:
+    - text: "5"
+    - heading "Payment information" [level=2]
+    - text: .
+  - listitem:
+    - text: "6"
+    - heading "Confirm order" [level=2]
+    - text: .
+- heading "Information" [level=3]
+- list:
+  - listitem:
+    - link "Sitemap":
+      - /url: /sitemap
+  - listitem:
+    - link "Shipping & Returns":
+      - /url: /shipping-returns
+  - listitem:
+    - link "Privacy Notice":
+      - /url: /privacy-policy
+  - listitem:
+    - link "Conditions of Use":
+      - /url: /conditions-of-use
+  - listitem:
+    - link "About us":
+      - /url: /about-us
+  - listitem:
+    - link "Contact us":
+      - /url: /contactus
+- heading "Customer service" [level=3]
+- list:
+  - listitem:
+    - link "Search":
+      - /url: /search
+  - listitem:
+    - link "News":
+      - /url: /news
+  - listitem:
+    - link "Blog":
+      - /url: /blog
+  - listitem:
+    - link "Recently viewed products":
+      - /url: /recentlyviewedproducts
+  - listitem:
+    - link "Compare products list":
+      - /url: /compareproducts
+  - listitem:
+    - link "New products":
+      - /url: /newproducts
+- heading "My account" [level=3]
+- list:
+  - listitem:
+    - link "My account":
+      - /url: /customer/info
+  - listitem:
+    - link "Orders":
+      - /url: /customer/orders
+  - listitem:
+    - link "Addresses":
+      - /url: /customer/addresses
+  - listitem:
+    - link "Shopping cart":
+      - /url: /cart
+  - listitem:
+    - link "Wishlist":
+      - /url: /wishlist
+- heading "Follow us" [level=3]
+- list:
+  - listitem:
+    - link "Facebook":
+      - /url: http://www.facebook.com/nopCommerce
+  - listitem:
+    - link "Twitter":
+      - /url: https://twitter.com/nopCommerce
+  - listitem:
+    - link "RSS":
+      - /url: /news/rss/1
+  - listitem:
+    - link "YouTube":
+      - /url: http://www.youtube.com/user/nopCommerce
+  - listitem:
+    - link "Google+":
+      - /url: https://plus.google.com/+nopcommerce
+- text: Powered by
+- link "nopCommerce":
+  - /url: http://www.nopcommerce.com/
+- text: Copyright © 2026 Tricentis Demo Web Shop. All rights reserved.
+```
+
+# Test source
+
+```ts
+  182 |         //click
+  183 |         console.log("Button visible:", await this.discountButton.isVisible());
+  184 |         console.log("Button enabled:", await this.discountButton.isEnabled());
+  185 |         await this.discountButton.click();
+  186 |         // validation
+  187 |         await expect(this.discountValidation).toBeVisible();
+  188 |         //get text
+  189 |         const validation = await this.discountValidation.innerText();
+  190 |         console.log("Validation Msg:", validation);
+  191 |         await expect(this.discountValidation).toContainText("couldn't be applied");
+  192 |     }
+  193 | 
+  194 |     async enterGiftcard() {
+  195 |         await expect(this.giftcardHeading).toBeVisible();
+  196 |         await expect(this.giftcardText).toBeVisible();
+  197 |         await this.giftcardinput.fill("JUNGKOOK1997");
+  198 |         await this.giftcardButton.click()
+  199 |         await expect(this.giftcardtValidation).toBeVisible();
+  200 |         const validation = await this.giftcardtValidation.innerText();
+  201 |         console.log("Validation Msg:", validation);
+  202 |     }
+  203 | 
+  204 |     async checkEstimateShipping(country: string, state: string, zipinput: string) {
+  205 |         await expect(this.estimateheading).toBeVisible();
+  206 |         await expect(this.estimatetext).toBeVisible();
+  207 |         await this.countryDropdown.selectOption({ label: country });
+  208 |         await this.stateDropdown.selectOption({ label: state });
+  209 |         await this.zip.fill(zipinput);
+  210 |         await this.estimateButton.click();
+  211 |         expect(this.shippingResult).toBeVisible();
+  212 |     }
+  213 | 
+  214 |     async verifyCartTotalsMatch() {
+  215 | 
+  216 |         const rawTablePrice = await this.tablePrice.innerText();
+  217 |         const rawSubTotal = await this.subTotal.innerText();
+  218 |         const rawFinalTotal = await this.total.innerText();
+  219 |         // Sanitize strings to extract only numbers/decimals (e.g., "30.00")
+  220 |         const tablePriceText = rawTablePrice.replace(/[^0-9.]/g, '');
+  221 |         const subTotalText = rawSubTotal.replace(/[^0-9.]/g, '');
+  222 |         const finalTotalText = rawFinalTotal.replace(/[^0-9.]/g, '');
+  223 | 
+  224 |         console.log(`Comparing Item Total: ${tablePriceText} with Sub-Total: ${subTotalText} and Total: ${finalTotalText}`);
+  225 | 
+  226 |         //  Assert they match perfectly
+  227 |         expect(tablePriceText).toBe(subTotalText);
+  228 |         expect(tablePriceText).toBe(finalTotalText);
+  229 | 
+  230 |         console.log("All totals match successfully!");
+  231 |     }
+  232 | 
+  233 |     async enterBillingAddress(address: string, country: string,) {
+  234 |         expect(this.billingAddHeading).toBeVisible();
+  235 |         await this.selectaBillingAddress.selectOption({ label: address });
+  236 |         await this.firstName.fill("John");
+  237 |         await this.lastname.fill("d");
+  238 |         await this.email.fill("john123@test123.com");
+  239 |         await this.countrybillingAdd.click();
+  240 |         await this.countrybillingAdd.selectOption({ label: country });
+  241 |         await this.cityadd.fill("Alashka");
+  242 |         await this.add1.fill("Alashka city");
+  243 |         await this.postalcode.fill("6789054");
+  244 |         await this.phonenum.fill("9876543210");
+  245 |         await this.continueaddress.click();
+  246 | 
+  247 |     }
+  248 |     async enterBillingAddressvalidation(address: string) {
+  249 |         await expect(this.billingAddHeading).toBeVisible();
+  250 |         await this.selectaBillingAddress.selectOption({ label: address });
+  251 |         await this.firstName.clear();
+  252 |         await this.lastname.clear();
+  253 |         await this.email.clear();
+  254 |         await this.cityadd.clear();
+  255 |         await this.add1.clear();
+  256 |         await this.postalcode.clear();
+  257 |         await this.phonenum.clear();
+  258 |         await this.continueaddress.click();
+  259 |         await expect(this.firstNameVal).toBeVisible();
+  260 |         await expect(this.lastnameVal).toBeVisible();
+  261 |         await expect(this.emailval).toBeVisible();
+  262 |         await expect(this.countryval).toBeVisible();
+  263 |         await expect(this.cityval).toBeVisible();
+  264 |         await expect(this.add1val).toBeVisible();
+  265 |         await expect(this.zipval).toBeVisible();
+  266 |         await expect(this.phoneval).toBeVisible();
+  267 | 
+  268 |     }
+  269 |     async EnterShippingaddress() {
+  270 |         await expect(this.shippingAddheading).toBeVisible();
+  271 |         await this.shippingpadd.selectOption({ label: 'John d, Alashka city, Alashka 6789054, United States' });
+  272 |         await expect(this.storepickup).toBeVisible();
+  273 |         await this.storepickup.click();
+  274 |         console.log("Store pickup is selected");
+  275 |         await expect(this.storepickupText).toBeVisible();
+  276 |         await this.continueshipingadd.click();
+  277 |     }
+  278 | 
+  279 |     async enterShippingMethod() {
+  280 |         //ground
+  281 |         await expect(this.shippingMethodheading).toBeVisible();
+> 282 |         await expect(this.ground).toBeVisible();
+      |                                   ^ Error: expect(locator).toBeVisible() failed
+  283 |         await expect(this.ground).toBeChecked();
+  284 |         const groundText = await this.page.locator('li').locator('div').nth(1);
+  285 |         console.log(groundText);
+  286 | 
+  287 |         //nextday
+  288 |         await expect(this.nextDay).toBeVisible();
+  289 |         await this.nextDay.check();
+  290 |         await expect(this.nextDay).toBeChecked();
+  291 |         const NextDayText = await this.page.getByText('The one day air shipping', { exact: true });
+  292 |         console.log(NextDayText);
+  293 | 
+  294 |         //ndDay
+  295 |         await expect(this.ndDayAir).toBeVisible();
+  296 |         const ndDayAirText = await this.page.getByText('The two day air shipping', { exact: true })
+  297 |         console.log(ndDayAirText);
+  298 | 
+  299 |         await this.continueshipmethod.click();
+  300 |     }
+  301 | 
+  302 |     async enterPaymentMethods() {
+  303 |         await expect(this.paymentMethodheading).toBeVisible();
+  304 |         await expect(this.codinpayment).toBeVisible();
+  305 |         await expect(this.codinpayment).toBeChecked();
+  306 |         await expect(this.money).toBeVisible();
+  307 |         await expect(this.creditcard).toBeVisible();
+  308 |         await expect(this.purchaseorder).toBeVisible();
+  309 |         await this.continuepaymentMethod.click();
+  310 |     }
+  311 | 
+  312 |     async checkPaymentinfo() {
+  313 |         await expect(this.paymentinfoheading).toBeVisible();
+  314 |         const paymentDetailsElement = this.page.locator('.section.payment-method, .payment-details');
+  315 |         const selectedPaymentText = await paymentDetailsElement.innerText();
+  316 |         console.log("Dynamically Selected Payment Method:", selectedPaymentText.trim());
+  317 |     }
+  318 | 
+  319 |     async checkOrderconfirmation() {
+  320 |         await expect(this.confirmorderheading).toBeVisible();
+  321 |         await expect(this.ordersummary).toBeVisible();
+  322 |         await this.confirmbtninfinal.click();
+  323 |     }
+  324 | 
+  325 |     async succesMsg() {
+  326 |         await expect(this.page.getByRole('heading', { name: 'Thank you' })).toBeVisible();
+  327 |         await expect(this.page.locator('div.section.order-completed')).toBeVisible();
+  328 |         await expect(this.page.getByText('Your order has been successfully processed!', { exact: true })).toBeVisible();
+  329 |         await this.page.locator('input.button-2.order-completed-continue-button').click();
+  330 |     }
+  331 | 
+  332 | 
+  333 | }
+```

@@ -1,0 +1,35 @@
+login successfull
+[
+  'Computing and Internet\n' +
+    '30.00\n' +
+    '10.00\n' +
+    'Copy of Computing and Internet EX\n' +
+    '30.00\n' +
+    '10.00'
+]
+Product Name: Computing and Internet
+Default Quantity is: 1
+Validation msg: Quantity should be positive
+Unit Price: 10
+Add to Cart Quantity is: 2
+Add to card Status: The product has been added to your shopping cart
+List of All Products : [ '\t\tComputing and Internet\t10.00\t\t20.00' ]
+Table Quantity Value: 2
+Header Quantity Number: 2
+Products in your Cart: Computing and Internet
+Unit Price: 10
+Add to Cart Quantity is: 3
+Total Price for Qty 3 : 30
+Button visible: true
+Button enabled: true
+Validation Msg: The coupon code you entered couldn't be applied to your order
+Validation Msg: The coupon code you entered couldn't be applied to your order
+Comparing Item Total: 30.00 with Sub-Total: 30.00 and Total: 30.00
+All totals match successfully!
+Count: 1
+Visible: false
+Text: 
+HTML: <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.FirstName" data-valmsg-replace="true"></span>
+First name validation is now visible!
+COD is selected
+Dynamically Selected Payment Method: You will pay by COD
