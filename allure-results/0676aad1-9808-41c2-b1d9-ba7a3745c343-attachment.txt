@@ -1,4 +1,0 @@
-login successfull
-locator('li').locator('div').nth(1)
-getByText('The one day air shipping', { exact: true })
-getByText('The two day air shipping', { exact: true })
