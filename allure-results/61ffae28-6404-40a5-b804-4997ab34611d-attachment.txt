@@ -1,0 +1,3 @@
+login successfull
+COD is selected
+Dynamically Selected Payment Method: You will pay by COD

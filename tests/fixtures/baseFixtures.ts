@@ -37,6 +37,7 @@ export const test = base.extend<MyFixture>({
         await loginPage.loginLink.click();
         await loginPage.login('john123@test123.com', 'Password@123'); // Put your standard valid credentials here
         console.log("login successfull");
+        
         // Verify setup login was successful
         await expect(loginPage.logoutLink).toBeVisible();
 
